@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norge i tall — økonomisk dashbord</title>
+  <meta name="description" content="Hvordan går det med norsk økonomi? Nøkkeltall med historikk — sysselsetting, gjeld, sykefravær, uføre, Oljefondet — sammenlignet med landene vi liker å sammenligne oss med.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🇳🇴&lt;/text&gt;&lt;/svg&gt;">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>Norge i tall</h1>
+      <p class="lede">Hvordan går det egentlig med norsk økonomi? Nøkkeltall med historikk — sammenlignet med landene vi liker å sammenligne oss med.</p>
+      <p class="updated" id="updated"></p>
+
+      <div class="controls">
+        <div class="control-group">
+          <span class="control-label">Sammenlign med</span>
+          <div class="chips" id="country-picker" role="group" aria-label="Velg land for sammenligning"></div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Tidsrom</span>
+          <div class="range" id="range-picker" role="group" aria-label="Velg tidsrom"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cat-nav-wrap">
+    <nav class="container cat-nav" id="cat-nav" aria-label="Kategorier"></nav>
+  </div>
+
+  <main class="container">
+    <section class="overview" id="overview" aria-label="Oversikt over nøkkeltall">
+      <h2 class="visually-hidden">Oversikt</h2>
+      <div id="overview-groups"></div>
+    </section>
+
+    <div id="sections"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Om tallene:</strong> Manuelt sammenstilt fra offentlige kilder — Eurostat, OECD, SSB, NAV, Norges Bank Investment Management og Gjeldsregisteret. Verdiene er avrundet, og enkelte kan være foreløpige eller avvike marginalt fra kildene. De ferskeste punktene (kvartalstallene og årstallene for 2025) er foreløpige og oppdateres etter hvert som statistikken publiseres. Bruk kildelenkene under hver graf for offisielle tall.</p>
+      <p>Indikatorer merket «Kun Norge» mangler direkte sammenlignbare tall for andre land — typisk fordi ordningene (sykepenger, uføretrygd, gjeldsregister, oljefond) er særnorske eller måles ulikt.</p>
+      <p class="footer-small">Statisk side uten avhengigheter eller sporing. Kildekode i repoet <code>norge</code>.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/data.overrides.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
