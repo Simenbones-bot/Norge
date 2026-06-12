@@ -171,7 +171,7 @@
       value.textContent = fmt(last[1], kpi.decimals);
       var unit = document.createElement("span");
       unit.className = "card-unit";
-      unit.textContent = " " + (kpi.unitShort || kpi.unit);
+      unit.textContent = " " + (kpi.unitShort !== undefined ? kpi.unitShort : kpi.unit);
       valueRow.appendChild(value);
       valueRow.appendChild(unit);
       card.appendChild(valueRow);

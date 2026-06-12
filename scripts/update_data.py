@@ -14,6 +14,10 @@ for hånd i js/data.js med tall fra kildene:
   - forbruksgjeld     gjeldsregisteret.com/pages/nokkeltall
   - oljefondet        nbim.no/no/oljefondet/markedsverdi (årsslutt)
   - husholdningsgjeld OECD household debt (% av disponibel inntekt)
+  - boligeierandel    Eurostat ilc_lvho02 (OWN) + US Census (husholdninger)
+  - boligpriser       OECD Analytical House Prices (real, 2015=100)
+  - sparerate         OECD/Eurostat husholdningenes sparerate (netto)
+  - aksjeandel        OECD Household Financial Assets / SSB finansregnskap
 """
 
 import json
@@ -24,8 +28,10 @@ from datetime import date
 
 BASE = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
 
-# Eurostat geo-kode -> landkode brukt i js/data.js
-GEO = {"NO": "NOR", "SE": "SWE", "DK": "DNK", "FI": "FIN", "NL": "NLD", "DE": "DEU"}
+# Eurostat geo-kode -> landkode brukt i js/data.js.
+# US finnes bare i enkelte Eurostat-datasett (f.eks. une_rt_a); der landet
+# mangler beholdes den håndkuraterte serien fra js/data.js (OECD/BLS-tall).
+GEO = {"NO": "NOR", "SE": "SWE", "DK": "DNK", "FI": "FIN", "NL": "NLD", "DE": "DEU", "US": "USA"}
 
 # KPI-id -> (eurostat-datasett, faste dimensjonsverdier)
 DATASETS = {

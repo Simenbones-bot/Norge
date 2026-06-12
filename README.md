@@ -2,7 +2,7 @@
 
 Et økonomisk dashbord for Norge: de viktigste nøkkeltallene med historikk,
 sammenlignet med landene vi liker å sammenligne oss med (Sverige, Danmark,
-Finland, Nederland og Tyskland).
+Finland, Nederland, Tyskland og USA).
 
 Ren statisk nettside — HTML, CSS og vanilla JavaScript. Ingen rammeverk,
 ingen byggesteg, ingen sporing.
@@ -11,16 +11,20 @@ ingen byggesteg, ingen sporing.
 
 | Indikator | Sammenligning | Kilde |
 |---|---|---|
-| Sysselsettingsandel (15–64 år) | 6 land | Eurostat `lfsi_emp_a` / SSB AKU |
-| Arbeidsledighet (15–74 år) | 6 land | Eurostat `une_rt_a` / SSB AKU |
-| Unge utenfor arbeid og utdanning (NEET, 15–29 år) | 6 land | Eurostat `edat_lfse_20` |
+| Sysselsettingsandel (15–64 år) | 7 land | Eurostat `lfsi_emp_a` / OECD / SSB AKU |
+| Arbeidsledighet (15–74 år) | 7 land | Eurostat `une_rt_a` / SSB AKU |
+| Unge utenfor arbeid og utdanning (NEET, 15–29 år) | 7 land | Eurostat `edat_lfse_20` / OECD |
 | Sykefravær (tapte dagsverk i %) | Kun Norge¹ | SSB sykefraværsstatistikk |
 | Uføretrygdede (% av 18–67 år) | Kun Norge¹ | NAV |
-| Husholdningenes gjeld (% av disponibel inntekt) | 6 land | OECD / SSB / Norges Bank |
+| Husholdningenes gjeld (% av disponibel inntekt) | 7 land | OECD / SSB / Norges Bank |
 | Forbruksgjeld / usikret kredittgjeld (mrd. kr) | Kun Norge¹ | Gjeldsregisteret / Norsk Gjeldsinformasjon |
 | Oljefondet (SPU), markedsverdi (mrd. kr) | Kun Norge | NBIM |
-| BNP-vekst (årlig volumvekst) | 6 land | Eurostat `tec00115` / SSB |
-| Inflasjon (KPI/HICP) | 6 land | Eurostat `prc_hicp_aind` / SSB |
+| Boligeierandel (% i eid bolig) | 7 land | Eurostat `ilc_lvho02` / US Census |
+| Boligpriser, realprisindeks (2015=100) | 7 land | OECD Analytical House Prices |
+| Sparerate (% av disponibel inntekt, netto) | 7 land | OECD / Eurostat |
+| Aksjer og fond (% av husholdningenes finansformue) | 7 land | OECD / SSB finansregnskap |
+| BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
+| Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind` / SSB / BLS |
 
 ¹ Indikatorer der ordningene er særnorske eller måles for ulikt til at
 direkte sammenligning gir mening (forklart på siden under hver graf).
@@ -73,7 +77,7 @@ scripts/update_data.py  Henter ferske serier fra Eurostat
 
 ## Mulige utvidelser
 
-- Flere indikatorer: boligpriser, styringsrente, produktivitet, offentlige
-  utgifter, handelsbalanse
+- Flere indikatorer: styringsrente, produktivitet, offentlige utgifter,
+  handelsbalanse, medianinntekt
 - Automatisk oppdatering via GitHub Actions (kjør `update_data.py` ukentlig)
 - Per-innbygger-visning av Oljefondet og BNP
