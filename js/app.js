@@ -27,8 +27,12 @@
 
   var state = {
     selected: new Set(DATA.countries.map(function (c) { return c.code; })),
-    range: "all" // "10" | "20" | "all"
+    range: "all", // "10" | "20" | "all"
+    view: "oversikt" // "oversikt" | gruppe-id
   };
+
+  var kpiById = {};
+  DATA.kpis.forEach(function (k) { kpiById[k.id] = k; });
 
   function minYearForRange() {
     var now = 0;
@@ -106,6 +110,60 @@
     return { text: "Norge er nr. " + rank + " av " + entries.length + " valgte land i " + fmtTime(year) + " (" + best + ").", rank: rank, of: entries.length };
   }
 
+  /* ---------- Kategorinavigasjon ---------- */
+
+  function buildNav() {
+    var nav = document.getElementById("cat-nav");
+    var items = [{ id: "oversikt", title: "Oversikt" }].concat(DATA.groups);
+    items.forEach(function (item) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "cat-btn";
+      btn.dataset.view = item.id;
+      btn.textContent = item.title;
+      btn.addEventListener("click", function () { setView(item.id); });
+      nav.appendChild(btn);
+    });
+  }
+
+  /* Viser oversikten eller én kategori; kpiId scroller til panelet. */
+  function setView(viewId, kpiId) {
+    if (viewId !== "oversikt" && !DATA.groups.some(function (g) { return g.id === viewId; })) {
+      viewId = "oversikt";
+    }
+    state.view = viewId;
+
+    document.querySelectorAll(".cat-btn").forEach(function (b) {
+      var active = b.dataset.view === viewId;
+      b.classList.toggle("cat-active", active);
+      if (active) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
+    });
+
+    document.getElementById("overview").style.display = viewId === "oversikt" ? "" : "none";
+    DATA.groups.forEach(function (g) {
+      var sec = document.getElementById("gruppe-" + g.id);
+      if (sec) sec.style.display = g.id === viewId ? "" : "none";
+    });
+
+    if (viewId !== "oversikt") renderAll(); // mål bredder på nytt når seksjonen er synlig
+
+    var panel = kpiId && document.getElementById("kpi-" + kpiId);
+    if (panel && panel.scrollIntoView) panel.scrollIntoView();
+    else if (window.scrollTo) window.scrollTo(0, 0);
+
+    try { history.replaceState(null, "", "#" + (kpiId ? "kpi-" + kpiId : viewId)); } catch (e) { /* file:// o.l. */ }
+  }
+
+  function applyHash() {
+    var hash = (location.hash || "").replace(/^#/, "");
+    if (hash.indexOf("kpi-") === 0) {
+      var kpi = kpiById[hash.slice(4)];
+      if (kpi) { setView(kpi.group, kpi.id); return; }
+    }
+    setView(hash || "oversikt");
+  }
+
   /* ---------- Kontroller ---------- */
 
   function buildControls() {
@@ -152,9 +210,26 @@
   /* ---------- Oversiktskort ---------- */
 
   function buildCards() {
-    var grid = document.getElementById("card-grid");
-    grid.innerHTML = "";
-    DATA.kpis.forEach(function (kpi) {
+    var wrap = document.getElementById("overview-groups");
+    wrap.innerHTML = "";
+    DATA.groups.forEach(function (group) {
+      var title = document.createElement("h3");
+      title.className = "overview-group-title";
+      title.textContent = group.title;
+      wrap.appendChild(title);
+
+      var grid = document.createElement("div");
+      grid.className = "card-grid";
+      wrap.appendChild(grid);
+
+      DATA.kpis.filter(function (k) { return k.group === group.id; }).forEach(function (kpi) {
+        buildCard(kpi, grid);
+      });
+    });
+  }
+
+  function buildCard(kpi, grid) {
+    {
       var nor = kpi.series.NOR;
       if (!nor || !nor.length) return;
       var last = lastPoint(nor);
@@ -163,6 +238,10 @@
       var card = document.createElement("a");
       card.className = "card";
       card.href = "#kpi-" + kpi.id;
+      card.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        setView(kpi.group, kpi.id);
+      });
 
       var head = document.createElement("div");
       head.className = "card-title";
@@ -203,7 +282,7 @@
       window.Charts.renderSparkline(spark, sparkPts, countryByCode.NOR.color);
 
       grid.appendChild(card);
-    });
+    }
   }
 
   /* ---------- Grafseksjoner ---------- */
@@ -360,10 +439,14 @@
 
   function init() {
     document.getElementById("updated").textContent = "Data per " + DATA.updated;
+    buildNav();
     buildControls();
     buildCards();
     buildSections();
     renderAll();
+    applyHash();
+
+    window.addEventListener("hashchange", applyHash);
 
     var resizeTimer = null;
     window.addEventListener("resize", function () {

@@ -148,9 +148,66 @@ body {
   font-weight: 600;
 }
 
+/* ---------- Kategorinavigasjon ---------- */
+
+.cat-nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(16, 32, 48, 0.06);
+}
+
+.cat-nav {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.cat-nav::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.cat-btn:hover { background: #eef2f5; color: var(--ink); }
+
+.cat-active, .cat-active:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
 /* ---------- Oversiktskort ---------- */
 
-.overview { margin: 28px 0 8px; }
+.overview { margin: 20px 0 8px; }
+
+.overview-group-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink-soft);
+  margin: 26px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.overview-group-title:first-child { margin-top: 6px; }
 
 .card-grid {
   display: grid;
@@ -213,7 +270,7 @@ body {
 
 /* ---------- Grupper og paneler ---------- */
 
-.group { margin: 44px 0 0; }
+.group { margin: 26px 0 0; }
 
 .group h2 {
   font-size: 1.45rem;
@@ -234,7 +291,7 @@ body {
   box-shadow: var(--shadow);
   padding: 20px 22px 16px;
   margin-bottom: 20px;
-  scroll-margin-top: 16px;
+  scroll-margin-top: 64px; /* plass til den klistrede kategorimenyen */
 }
 
 .kpi-head {
