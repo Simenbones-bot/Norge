@@ -23,6 +23,10 @@ De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
   - aksjeandel        OECD Household Financial Assets / SSB finansregnskap
   - inntekt           OECD Average Annual Wages (USD PPP, faste priser)
   - fodselsrate       Eurostat demo_find/tps00199 + CDC (USA)
+  - styringsrente     Norges Bank / Riksbanken / Nationalbanken / ECB / Fed
+  - kronekurs         Norges Bank valutakurser (EUR/NOK, årssnitt)
+  - off_utgifter      Eurostat gov_10a_main (TE, % av BNP) x BNP per
+                      innbygger i PPS -> USD PPP per innbygger
 """
 
 import json

@@ -27,14 +27,20 @@ ingen byggesteg, ingen sporing.
 | Fødselsrate (barn per kvinne, SFT) | 7 land | Eurostat `tps00199` / SSB / CDC |
 | BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
 | Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind`/`manr` / SSB / BLS |
+| Styringsrente (ved kvartals-/årsslutt) | 7 land² | Norges Bank / Riksbanken / Nationalbanken / ECB / Fed |
+| Kronekursen (kr per euro) | Kun Norge¹ | Norges Bank |
+| Offentlige utgifter per innbygger (USD, PPP) | 7 land | Eurostat `gov_10a_main` / OECD / SSB |
 
 Tidslinjen er årlig fra 2000, og fortsetter med **kvartalsoppløsning**
-for arbeidsledighet og inflasjon fra 2025 (K1, K2 …). Kvartaler lagres
-som desimalår på kvartalsmidtpunktet, så de aldri kolliderer med
-årspunkter: K1 2026 = `2026.125`, K4 2025 = `2025.875`.
+for arbeidsledighet, inflasjon, styringsrente og kronekurs fra 2025
+(K1, K2 …). Kvartaler lagres som desimalår på kvartalsmidtpunktet, så de
+aldri kolliderer med årspunkter: K1 2026 = `2026.125`, K4 2025 = `2025.875`.
 
 ¹ Indikatorer der ordningene er særnorske eller måles for ulikt til at
 direkte sammenligning gir mening (forklart på siden under hver graf).
+
+² Tyskland, Finland og Nederland har euro og deler ECB-renten, så de tre
+linjene overlapper i grafen.
 
 ## Kjør lokalt
 
