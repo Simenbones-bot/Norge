@@ -44,9 +44,14 @@ window.NORGE_DATA = {
       intro: "Hva tjener folk, får vi nok barn til å bære velferdsstaten — og lærer de nok på skolen?"
     },
     {
+      id: "naering",
+      title: "Næringsliv",
+      intro: "Skapes det nye bedrifter — og hvor mange bukker under?"
+    },
+    {
       id: "makro",
       title: "Økonomien i stort",
-      intro: "Vekst, priser, renter og offentlig pengebruk — de store linjene i økonomien."
+      intro: "Vekst, priser, renter, skatt og offentlig pengebruk — de store linjene i økonomien."
     }
   ],
 
@@ -118,16 +123,20 @@ window.NORGE_DATA = {
       id: "sykefravaer",
       group: "arbeid",
       title: "Sykefravær",
-      short: "Tapte dagsverk i % av avtalte",
+      short: "Sysselsatte borte fra jobb pga. sykdom",
       unit: "%",
       decimals: 1,
       goodDirection: "down",
-      norwayOnly: true,
-      norwayOnlyReason: "Sykefravær kan ikke sammenlignes direkte mellom land — trygdeordninger og målemetoder er for ulike. OECDs anslag plasserer likevel Norge på topp i fravær blant medlemslandene.",
-      description: "Lege- og egenmeldt sykefravær: tapte dagsverk i prosent av avtalte dagsverk (SSB/NAV). Fraværet har steget jevnt siden pandemien og er på sitt høyeste nivå siden 2009.",
-      source: { name: "SSB sykefraværsstatistikk", url: "https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/statistikk/sykefravaer" },
+      description: "Andel sysselsatte som var helt borte fra jobben i referanseuka på grunn av egen sykdom (AKU/LFS) — den eneste målemetoden som kan sammenlignes mellom land. Norge ligger på topp år etter år. Den norske sykefraværsprosenten (tapte dagsverk, SSB/NAV) måler bredere og var 7,1 % i 2025 — det høyeste siden 2009.",
+      source: { name: "Eurostat LFS / OECD / BLS (USA) / SSB", url: "https://www.ssb.no/arbeid-og-lonn/arbeidsmiljo-sykefravaer-og-arbeidskonflikter/statistikk/sykefravaer" },
       series: {
-        NOR: [[2001, 7.4], [2002, 7.7], [2003, 8.0], [2004, 7.1], [2005, 6.7], [2006, 6.9], [2007, 6.9], [2008, 7.1], [2009, 7.6], [2010, 6.8], [2011, 6.6], [2012, 6.5], [2013, 6.4], [2014, 6.4], [2015, 6.3], [2016, 6.3], [2017, 6.3], [2018, 6.2], [2019, 6.1], [2020, 6.3], [2021, 6.5], [2022, 6.8], [2023, 6.9], [2024, 7.0], [2025, 7.1]]
+        NOR: [[2010, 4.6], [2012, 4.4], [2014, 4.5], [2016, 4.8], [2018, 4.7], [2020, 4.9], [2021, 5.0], [2022, 5.4], [2023, 5.3], [2024, 5.4]],
+        SWE: [[2010, 2.6], [2012, 2.7], [2014, 3.0], [2016, 3.4], [2018, 3.2], [2020, 3.5], [2021, 3.3], [2022, 3.6], [2023, 3.4], [2024, 3.4]],
+        DNK: [[2010, 2.6], [2012, 2.5], [2014, 2.6], [2016, 2.8], [2018, 2.8], [2020, 2.7], [2021, 2.8], [2022, 3.1], [2023, 2.9], [2024, 3.0]],
+        FIN: [[2010, 2.9], [2012, 3.0], [2014, 3.0], [2016, 3.1], [2018, 3.3], [2020, 3.0], [2021, 3.2], [2022, 3.6], [2023, 3.4], [2024, 3.3]],
+        NLD: [[2010, 3.6], [2012, 3.7], [2014, 3.6], [2016, 3.8], [2018, 4.0], [2020, 4.3], [2021, 4.4], [2022, 4.9], [2023, 4.8], [2024, 4.9]],
+        DEU: [[2010, 3.3], [2012, 3.4], [2014, 3.6], [2016, 3.8], [2018, 4.0], [2020, 3.9], [2021, 3.9], [2022, 4.9], [2023, 4.7], [2024, 4.6]],
+        USA: [[2010, 1.8], [2012, 1.8], [2014, 1.9], [2016, 1.9], [2018, 1.9], [2020, 2.4], [2021, 2.2], [2022, 2.3], [2023, 2.1], [2024, 2.1]]
       }
     },
 
@@ -380,6 +389,44 @@ window.NORGE_DATA = {
     },
 
     {
+      id: "nyetableringer",
+      group: "naering",
+      title: "Nyetablerte foretak",
+      short: "Nyregistrerte foretak per år",
+      unit: "foretak",
+      unitShort: "",
+      decimals: 0,
+      deltaAbsolute: true,
+      goodDirection: "up",
+      norwayOnly: true,
+      norwayOnlyReason: "Foretaksformer og registreringspraksis varierer for mye mellom land til at antall kan sammenlignes — internasjonalt finnes bare vekstindekser.",
+      description: "Antall nyregistrerte foretak per år (SSB/Brønnøysundregistrene). Etableringslysten toppet seg under pandemien i 2021, og har siden falt tilbake men holder seg over nivåene fra 2010-tallet. Nivåene er omtrentlige.",
+      source: { name: "SSB foretaksstatistikk / Brønnøysundregistrene", url: "https://www.ssb.no/virksomheter-foretak-og-regnskap/virksomheter-og-foretak/statistikk/foretak" },
+      series: {
+        NOR: [[2010, 47000], [2012, 51000], [2014, 54000], [2016, 58000], [2018, 60000], [2019, 62000], [2020, 66000], [2021, 71000], [2022, 64000], [2023, 60000], [2024, 59000], [2025, 60000]]
+      }
+    },
+
+    {
+      id: "konkurser",
+      group: "naering",
+      title: "Konkurser",
+      short: "Foretakskonkurser per år",
+      unit: "konkurser",
+      unitShort: "",
+      decimals: 0,
+      deltaAbsolute: true,
+      goodDirection: "down",
+      norwayOnly: true,
+      norwayOnlyReason: "Antall konkurser avhenger av landets størrelse, foretaksstruktur og konkurslovgivning — internasjonalt finnes bare indekser, ikke sammenlignbare nivåtall.",
+      description: "Antall foretakskonkurser per år (Brønnøysundregistrene/SSB). Støtteordningene holdt konkursene kunstig lave under pandemien — etterfulgt av en kraftig økning til de høyeste nivåene siden finanskrisen, med bygg og anlegg hardest rammet. Nivåene er omtrentlige.",
+      source: { name: "SSB konkursstatistikk / Brønnøysundregistrene", url: "https://www.ssb.no/virksomheter-foretak-og-regnskap/konkurser/statistikk/opna-konkursar" },
+      series: {
+        NOR: [[2000, 3600], [2002, 4500], [2003, 5200], [2004, 4300], [2006, 3000], [2008, 3600], [2009, 5000], [2010, 4400], [2012, 3800], [2014, 4800], [2016, 4500], [2018, 5000], [2019, 5000], [2020, 4000], [2021, 3800], [2022, 3900], [2023, 4900], [2024, 5700], [2025, 6100]]
+      }
+    },
+
+    {
       id: "bnp_vekst",
       group: "makro",
       title: "BNP-vekst",
@@ -483,6 +530,29 @@ window.NORGE_DATA = {
         NLD: [[2000, 14500], [2002, 16000], [2004, 17000], [2006, 19000], [2008, 21000], [2010, 22500], [2012, 23500], [2014, 24500], [2016, 25500], [2018, 27500], [2019, 28500], [2020, 31500], [2021, 32500], [2022, 33000], [2023, 34500], [2024, 36000]],
         DEU: [[2000, 14000], [2002, 15000], [2004, 16000], [2006, 17500], [2008, 19000], [2010, 21000], [2012, 22500], [2014, 24500], [2016, 26000], [2018, 28000], [2019, 29500], [2020, 32500], [2021, 33500], [2022, 34000], [2023, 35000], [2024, 36500]],
         USA: [[2000, 12000], [2002, 13500], [2004, 14500], [2006, 16000], [2008, 17500], [2010, 19500], [2012, 20500], [2014, 22000], [2016, 23500], [2018, 25500], [2019, 26500], [2020, 28500], [2021, 29500], [2022, 29000], [2023, 30500], [2024, 32000]]
+      }
+    },
+
+    {
+      id: "skattetrykk",
+      group: "makro",
+      title: "Skattetrykk",
+      short: "Skatter og avgifter i % av BNP",
+      unit: "% av BNP",
+      unitShort: "%",
+      decimals: 1,
+      goodDirection: "neutral",
+      goodNote: "Nivået er et politisk verdivalg — høy skatt finansierer velferd, lav gir rom for privat forbruk",
+      description: "Samlede skatter og avgifter — inntektsskatt, moms, arbeidsgiveravgift og alt annet — i prosent av BNP (OECD). Danmark har det høyeste skattetrykket i OECD; Norge ligger rundt 41 %, der petroleumsskatten gir svingninger (toppen i 2022 var gassåret). USA ligger 15 prosentpoeng under Norden.",
+      source: { name: "OECD Revenue Statistics (tax-to-GDP)", url: "https://www.oecd.org/en/data/indicators/tax-revenue.html" },
+      series: {
+        NOR: [[2000, 41.9], [2002, 42.0], [2004, 42.5], [2006, 43.2], [2008, 41.4], [2010, 41.9], [2012, 41.5], [2014, 38.8], [2016, 38.4], [2018, 39.6], [2019, 39.9], [2020, 38.7], [2021, 42.7], [2022, 44.3], [2023, 41.5], [2024, 41.0]],
+        SWE: [[2000, 49.0], [2002, 45.4], [2004, 45.6], [2006, 45.9], [2008, 44.0], [2010, 43.2], [2012, 42.6], [2014, 42.6], [2016, 44.0], [2018, 43.9], [2019, 42.8], [2020, 42.5], [2021, 42.6], [2022, 41.3], [2023, 41.0], [2024, 41.4]],
+        DNK: [[2000, 46.9], [2002, 46.0], [2004, 47.2], [2006, 47.7], [2008, 46.0], [2010, 44.8], [2012, 45.5], [2014, 48.5], [2016, 45.7], [2018, 44.4], [2019, 46.9], [2020, 46.8], [2021, 46.9], [2022, 41.9], [2023, 43.8], [2024, 44.5]],
+        FIN: [[2000, 45.8], [2002, 43.7], [2004, 41.8], [2006, 42.1], [2008, 41.2], [2010, 40.8], [2012, 42.7], [2014, 43.8], [2016, 43.7], [2018, 42.4], [2019, 42.2], [2020, 41.8], [2021, 43.0], [2022, 43.0], [2023, 42.5], [2024, 42.0]],
+        NLD: [[2000, 36.9], [2002, 35.4], [2004, 35.0], [2006, 36.0], [2008, 36.2], [2010, 36.2], [2012, 36.0], [2014, 37.5], [2016, 38.4], [2018, 38.8], [2019, 39.3], [2020, 39.7], [2021, 39.7], [2022, 38.0], [2023, 38.6], [2024, 39.0]],
+        DEU: [[2000, 36.4], [2002, 34.4], [2004, 33.9], [2006, 34.5], [2008, 35.4], [2010, 35.5], [2012, 36.4], [2014, 36.7], [2016, 37.7], [2018, 38.5], [2019, 38.6], [2020, 37.9], [2021, 39.0], [2022, 39.3], [2023, 38.1], [2024, 38.0]],
+        USA: [[2000, 28.3], [2002, 25.0], [2004, 24.6], [2006, 26.6], [2008, 25.4], [2010, 23.5], [2012, 24.0], [2014, 25.9], [2016, 25.9], [2018, 24.9], [2019, 24.9], [2020, 25.7], [2021, 27.6], [2022, 27.7], [2023, 25.2], [2024, 25.5]]
       }
     }
   ]

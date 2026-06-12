@@ -12,7 +12,8 @@ slik at tidslinjen fortsetter med K1, K2 ... inn i inneværende år.
 
 De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
 
-  - sykefravaer       SSB tabell 12441 (sykefraværsprosent)
+  - sykefravaer       Eurostat LFS (fravaer pga. egen sykdom) / BLS for USA;
+                      norsk sykefravaersprosent: SSB tabell 12441
   - ufore             NAV uføretrygdstatistikk (andel av bef. 18-67)
   - forbruksgjeld     gjeldsregisteret.com/pages/nokkeltall
   - oljefondet        nbim.no/no/oljefondet/markedsverdi (årsslutt)
@@ -31,6 +32,9 @@ De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
                       (nye eneboliger, kr per m2 uten tomt)
   - pisa              OECD PISA (matematikk, hvert 3. aar; 2025-runden
                       publiseres desember 2026)
+  - nyetableringer    SSB foretaksstatistikk / Broennoeysundregistrene
+  - konkurser         SSB opna konkursar / Broennoeysundregistrene
+  - skattetrykk       OECD Revenue Statistics (tax-to-GDP)
 """
 
 import json

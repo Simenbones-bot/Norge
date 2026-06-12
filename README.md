@@ -14,7 +14,7 @@ ingen byggesteg, ingen sporing.
 | Sysselsettingsandel (15–64 år) | 7 land | Eurostat `lfsi_emp_a` / OECD / SSB AKU |
 | Arbeidsledighet (15–74 år) | 7 land | Eurostat `une_rt_a` / SSB AKU |
 | Unge utenfor arbeid og utdanning (NEET, 15–29 år) | 7 land | Eurostat `edat_lfse_20` / OECD |
-| Sykefravær (tapte dagsverk i %) | Kun Norge¹ | SSB sykefraværsstatistikk |
+| Sykefravær (sysselsatte borte pga. sykdom, LFS) | 7 land | Eurostat LFS / OECD / BLS / SSB |
 | Uføretrygdede (% av 18–67 år) | Kun Norge¹ | NAV |
 | Husholdningenes gjeld (% av disponibel inntekt) | 7 land | OECD / SSB / Norges Bank |
 | Forbruksgjeld / usikret kredittgjeld (mrd. kr) | Kun Norge¹ | Gjeldsregisteret / Norsk Gjeldsinformasjon |
@@ -27,6 +27,9 @@ ingen byggesteg, ingen sporing.
 | Gjennomsnittslønn (USD, PPP-justert) | 7 land | OECD Average Annual Wages |
 | Fødselsrate (barn per kvinne, SFT) | 7 land | Eurostat `tps00199` / SSB / CDC |
 | Skoleresultater (PISA-poeng i matematikk) | 7 land | OECD PISA |
+| Nyetablerte foretak (per år) | Kun Norge¹ | SSB / Brønnøysundregistrene |
+| Konkurser (foretak per år) | Kun Norge¹ | SSB / Brønnøysundregistrene |
+| Skattetrykk (skatter og avgifter, % av BNP) | 7 land | OECD Revenue Statistics |
 | BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
 | Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind`/`manr` / SSB / BLS |
 | Styringsrente (ved kvartals-/årsslutt) | 7 land² | Norges Bank / Riksbanken / Nationalbanken / ECB / Fed |
