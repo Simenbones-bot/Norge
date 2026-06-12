@@ -249,6 +249,24 @@ window.NORGE_DATA = {
     },
 
     {
+      id: "byggekostnad",
+      group: "bolig",
+      title: "Byggekostnad",
+      short: "Nye boliger, kr per kvadratmeter",
+      unit: "kr per m²",
+      unitShort: "kr/m²",
+      decimals: 0,
+      goodDirection: "down",
+      norwayOnly: true,
+      norwayOnlyReason: "Byggekostnader i kroner per kvadratmeter kan ikke sammenlignes direkte mellom land — valuta, byggestandard og hva som regnes inn varierer. Internasjonalt finnes bare vekstindekser, og kostnadshoppet etter pandemien traff hele Europa.",
+      description: "Gjennomsnittlig byggekostnad for nye eneboliger, kroner per kvadratmeter (uten tomt). Kostnadene er om lag firedoblet siden 2000, med et markant hopp under materialprissjokket 2021–2023 — en hovedårsak til at boligbyggingen har stupt. Nivåene er omtrentlige; se kildene for offisielle tall.",
+      source: { name: "SSB byggekostnadsstatistikk / Boligprodusentene", url: "https://www.ssb.no/priser-og-prisindekser/byggekostnadsindekser" },
+      series: {
+        NOR: [[2000, 9500], [2002, 10800], [2004, 12200], [2006, 14500], [2008, 17000], [2010, 19500], [2012, 22000], [2014, 24000], [2016, 26500], [2018, 29000], [2019, 30000], [2020, 31500], [2021, 33500], [2022, 37000], [2023, 39500], [2024, 41000], [2025, 42500]]
+      }
+    },
+
+    {
       id: "sparerate",
       group: "bolig",
       title: "Sparerate",

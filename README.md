@@ -21,6 +21,7 @@ ingen byggesteg, ingen sporing.
 | Oljefondet (SPU), markedsverdi (mrd. kr) | Kun Norge | NBIM |
 | Boligeierandel (% i eid bolig) | 7 land | Eurostat `ilc_lvho02` / US Census |
 | Boligpriser, realprisindeks (2015=100) | 7 land | OECD Analytical House Prices |
+| Byggekostnad, nye boliger (kr per m²) | Kun Norge¹ | SSB / Boligprodusentene |
 | Sparerate (% av disponibel inntekt, netto) | 7 land | OECD / Eurostat |
 | Aksjer og fond (% av husholdningenes finansformue) | 7 land | OECD / SSB finansregnskap |
 | Gjennomsnittslønn (USD, PPP-justert) | 7 land | OECD Average Annual Wages |

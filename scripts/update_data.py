@@ -27,6 +27,8 @@ De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
   - kronekurs         Norges Bank valutakurser (EUR/NOK, årssnitt)
   - off_utgifter      Eurostat gov_10a_main (TE, % av BNP) x BNP per
                       innbygger i PPS -> USD PPP per innbygger
+  - byggekostnad      SSB byggekostnadsstatistikk / Boligprodusentene
+                      (nye eneboliger, kr per m2 uten tomt)
 """
 
 import json
