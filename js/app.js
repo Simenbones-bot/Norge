@@ -7,6 +7,7 @@
 
   var DATA = window.NORGE_DATA;
   var fmt = window.Charts.fmt;
+  var fmtTime = window.Charts.fmtTime;
 
   /* Maskinhentede serier (scripts/update_data.py) overstyrer basisdata. */
   var overrides = window.NORGE_DATA_OVERRIDES;
@@ -35,6 +36,7 @@
       var nor = kpi.series.NOR;
       if (nor && nor.length) now = Math.max(now, nor[nor.length - 1][0]);
     });
+    now = Math.floor(now);
     if (state.range === "10") return now - 10;
     if (state.range === "20") return now - 20;
     return -Infinity;
@@ -73,7 +75,7 @@
     var tone = "neutral";
     if (kpi.goodDirection === "up") tone = dir > 0 ? "good" : dir < 0 ? "bad" : "neutral";
     if (kpi.goodDirection === "down") tone = dir > 0 ? "bad" : dir < 0 ? "good" : "neutral";
-    return { text: text + " siden " + prev[0], tone: tone, dir: dir };
+    return { text: text + " siden " + fmtTime(prev[0]), tone: tone, dir: dir };
   }
 
   /* Norges plassering blant valgte land i siste år med norske tall. */
@@ -98,7 +100,7 @@
     var rank = entries.findIndex(function (e) { return e.code === "NOR"; }) + 1;
     if (rank === 0) return null;
     var best = kpi.goodDirection === "up" ? "høyest er best" : "lavest er best";
-    return { text: "Norge er nr. " + rank + " av " + entries.length + " valgte land i " + year + " (" + best + ").", rank: rank, of: entries.length };
+    return { text: "Norge er nr. " + rank + " av " + entries.length + " valgte land i " + fmtTime(year) + " (" + best + ").", rank: rank, of: entries.length };
   }
 
   /* ---------- Kontroller ---------- */
@@ -180,7 +182,7 @@
       meta.className = "card-meta";
       var yearSpan = document.createElement("span");
       yearSpan.className = "card-year";
-      yearSpan.textContent = String(last[0]);
+      yearSpan.textContent = fmtTime(last[0]);
       meta.appendChild(yearSpan);
       if (delta) {
         var badge = document.createElement("span");
@@ -330,7 +332,7 @@
     yearList.forEach(function (yr) {
       var tr = document.createElement("tr");
       var td0 = document.createElement("td");
-      td0.textContent = String(yr);
+      td0.textContent = fmtTime(yr);
       tr.appendChild(td0);
       series.forEach(function (s) {
         var td = document.createElement("td");

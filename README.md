@@ -23,8 +23,15 @@ ingen byggesteg, ingen sporing.
 | Boligpriser, realprisindeks (2015=100) | 7 land | OECD Analytical House Prices |
 | Sparerate (% av disponibel inntekt, netto) | 7 land | OECD / Eurostat |
 | Aksjer og fond (% av husholdningenes finansformue) | 7 land | OECD / SSB finansregnskap |
+| Gjennomsnittslønn (USD, PPP-justert) | 7 land | OECD Average Annual Wages |
+| Fødselsrate (barn per kvinne, SFT) | 7 land | Eurostat `tps00199` / SSB / CDC |
 | BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
-| Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind` / SSB / BLS |
+| Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind`/`manr` / SSB / BLS |
+
+Tidslinjen er årlig fra 2000, og fortsetter med **kvartalsoppløsning**
+for arbeidsledighet og inflasjon fra 2025 (K1, K2 …). Kvartaler lagres
+som desimalår på kvartalsmidtpunktet, så de aldri kolliderer med
+årspunkter: K1 2026 = `2026.125`, K4 2025 = `2025.875`.
 
 ¹ Indikatorer der ordningene er særnorske eller måles for ulikt til at
 direkte sammenligning gir mening (forklart på siden under hver graf).
@@ -47,7 +54,9 @@ Datasettet ligger i [`js/data.js`](js/data.js) og er **manuelt sammenstilt**
 fra offentlige kilder (Eurostat, OECD, SSB, NAV, NBIM, Gjeldsregisteret),
 sist gjennomgått juni 2026. Verdiene er avrundet og enkelte kan være
 foreløpige eller avvike marginalt fra kildene — kildelenkene under hver graf
-viser alltid offisielle tall.
+viser alltid offisielle tall. **De ferskeste punktene (2025-kvartalene og
+2025-årstallene) er foreløpige anslag** og bør oppdateres mot kildene, helst
+maskinelt:
 
 ### Oppdatere data
 
@@ -59,7 +68,11 @@ python3 scripts/update_data.py
 ```
 
 Skriptet skriver `js/data.overrides.js`, som overstyrer basisseriene i
-`js/data.js` uten å røre dem. De særnorske seriene (sykefravær, uføre,
+`js/data.js` uten å røre dem. Det henter både årlige serier og ferske
+kvartalsserier (sesongjustert ledighet fra `une_rt_q`, inflasjon
+kvartalssnittet fra månedstallene i `prc_hicp_manr`) — slik kommer nye
+kvartaler (f.eks. K1 2026) automatisk inn på tidslinjen etter hvert som
+Eurostat publiserer dem. De særnorske seriene (sykefravær, uføre,
 forbruksgjeld, Oljefondet, husholdningsgjeld) oppdateres for hånd i
 `js/data.js`; kildene står i toppen av skriptet og i datafilen.
 

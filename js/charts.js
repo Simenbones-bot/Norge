@@ -19,6 +19,18 @@ window.Charts = (function () {
     return (negative ? "−" : "") + out;
   }
 
+  /*
+   * Tidspunkter er desimalår: heltall = årstall, kvartaler ligger på
+   * kvartalsmidtpunktet år + (kvartal-0,5)/4 (K1 2026 = 2026.125,
+   * K4 2025 = 2025.875) så de aldri kolliderer med årspunkter.
+   */
+  function fmtTime(t) {
+    if (Number.isInteger(t)) return String(t);
+    var year = Math.floor(t);
+    var q = Math.round((t - year) * 4 + 0.5);
+    return "K" + q + " " + year;
+  }
+
   function el(tag, attrs, parent) {
     var node = document.createElementNS(SVG_NS, tag);
     for (var k in attrs) node.setAttribute(k, attrs[k]);
@@ -189,22 +201,38 @@ window.Charts = (function () {
       tooltip.style.display = "none";
     }
 
+    /* Alle distinkte tidspunkter i synlige serier — hover snapper til nærmeste. */
+    var times = [];
+    (function () {
+      var seen = {};
+      series.forEach(function (s) {
+        s.points.forEach(function (p) {
+          if (!seen[p[0]]) { seen[p[0]] = true; times.push(p[0]); }
+        });
+      });
+      times.sort(function (a, b) { return a - b; });
+    })();
+
     function showHover(clientX) {
       var rect = svg.getBoundingClientRect();
       var scale = rect.width / width;
       var px = (clientX - rect.left) / scale;
-      var year = Math.round(minYear + ((px - margin.left) / iw) * (maxYear - minYear));
-      year = Math.min(maxYear, Math.max(minYear, year));
+      var tRaw = minYear + ((px - margin.left) / iw) * (maxYear - minYear);
+      var t = times[0], bestDist = Infinity;
+      for (var k = 0; k < times.length; k++) {
+        var dist = Math.abs(times[k] - tRaw);
+        if (dist < bestDist) { bestDist = dist; t = times[k]; }
+      }
 
       var rows = [];
       series.forEach(function (s, i) {
         var pt = null;
         for (var j = 0; j < s.points.length; j++) {
-          if (s.points[j][0] === year) { pt = s.points[j]; break; }
+          if (s.points[j][0] === t) { pt = s.points[j]; break; }
         }
         if (pt) {
           rows.push({ s: s, v: pt[1] });
-          markers[i].setAttribute("cx", x(year));
+          markers[i].setAttribute("cx", x(t));
           markers[i].setAttribute("cy", y(pt[1]));
           markers[i].setAttribute("visibility", "visible");
         } else {
@@ -213,13 +241,13 @@ window.Charts = (function () {
       });
       if (rows.length === 0) { hideHover(); return; }
 
-      var gx = x(year);
+      var gx = x(t);
       guide.setAttribute("x1", gx);
       guide.setAttribute("x2", gx);
       guide.setAttribute("visibility", "visible");
 
       rows.sort(function (a, b) { return b.v - a.v; });
-      var html = '<div class="tt-year">' + year + "</div>";
+      var html = '<div class="tt-year">' + fmtTime(t) + "</div>";
       rows.forEach(function (r) {
         html += '<div class="tt-row' + (r.s.emphasize ? " tt-nor" : "") + '">' +
           '<span class="tt-dot" style="background:' + r.s.color + '"></span>' +
@@ -267,5 +295,5 @@ window.Charts = (function () {
     container.appendChild(svg);
   }
 
-  return { renderLineChart: renderLineChart, renderSparkline: renderSparkline, fmt: fmt };
+  return { renderLineChart: renderLineChart, renderSparkline: renderSparkline, fmt: fmt, fmtTime: fmtTime };
 })();
