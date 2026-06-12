@@ -1,14 +1,15 @@
 name: Publiser til GitHub Pages
 
+# Publiserer siden ved å pushe innholdet til gh-pages-branchen.
+# GitHub Pages serverer gh-pages automatisk (Settings -> Pages).
+
 on:
   push:
     branches: ["claude/intelligent-keller-kgbcf5"]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -17,29 +18,27 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Hent koden
         uses: actions/checkout@v4
-
-      - name: Konfigurer Pages (aktiverer ved første kjøring)
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Pakk siden
         run: |
           mkdir dist
           cp index.html dist/
           cp -r css js dist/
+          touch dist/.nojekyll
 
-      - name: Last opp artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Deploy til GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push til gh-pages
+        run: |
+          cd dist
+          git init -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publiser fra ${GITHUB_SHA}"
+          git push --force \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
