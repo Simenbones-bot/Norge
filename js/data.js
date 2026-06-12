@@ -40,8 +40,8 @@ window.NORGE_DATA = {
     },
     {
       id: "inntekt",
-      title: "Inntekt og befolkning",
-      intro: "Hva tjener folk — og får vi nok barn til å bære velferdsstaten på sikt?"
+      title: "Inntekt, befolkning og skole",
+      intro: "Hva tjener folk, får vi nok barn til å bære velferdsstaten — og lærer de nok på skolen?"
     },
     {
       id: "makro",
@@ -352,6 +352,30 @@ window.NORGE_DATA = {
         NLD: [[2000, 1.72], [2002, 1.73], [2004, 1.73], [2006, 1.72], [2008, 1.77], [2010, 1.79], [2012, 1.72], [2014, 1.71], [2016, 1.66], [2018, 1.59], [2019, 1.57], [2020, 1.55], [2021, 1.62], [2022, 1.49], [2023, 1.43], [2024, 1.42]],
         DEU: [[2000, 1.38], [2002, 1.34], [2004, 1.36], [2006, 1.33], [2008, 1.38], [2010, 1.39], [2012, 1.41], [2014, 1.47], [2016, 1.60], [2018, 1.57], [2019, 1.54], [2020, 1.53], [2021, 1.58], [2022, 1.46], [2023, 1.35], [2024, 1.32]],
         USA: [[2000, 2.06], [2002, 2.01], [2004, 2.05], [2006, 2.11], [2008, 2.07], [2010, 1.93], [2012, 1.88], [2014, 1.86], [2016, 1.82], [2018, 1.73], [2019, 1.71], [2020, 1.64], [2021, 1.66], [2022, 1.67], [2023, 1.62], [2024, 1.62]]
+      }
+    },
+
+    {
+      id: "pisa",
+      group: "inntekt",
+      title: "Skoleresultater (PISA)",
+      short: "PISA-poeng i matematikk, 15-åringer",
+      unit: "poeng",
+      unitShort: "poeng",
+      decimals: 0,
+      deltaAbsolute: true,
+      goodDirection: "up",
+      goodNote: "OECD-snittet i 2022 var 472 poeng",
+      description: "OECDs PISA-undersøkelse måler 15-åringers kompetanse hvert tredje år — her vises matematikk. Norge falt 33 poeng fra 2018 til 2022, omtrent ett skoleårs læring, og ligger nå under OECD-snittet. Hele Vesten falt etter pandemien, og Finland har falt fra verdenstoppen i 2003. Lesing og naturfag viser samme mønster. Neste runde (PISA 2025) publiseres i desember 2026.",
+      source: { name: "OECD PISA", url: "https://www.oecd.org/en/about/programmes/pisa.html" },
+      series: {
+        NOR: [[2003, 495], [2006, 490], [2009, 498], [2012, 489], [2015, 502], [2018, 501], [2022, 468]],
+        SWE: [[2003, 509], [2006, 502], [2009, 494], [2012, 478], [2015, 494], [2018, 502], [2022, 482]],
+        DNK: [[2003, 514], [2006, 513], [2009, 503], [2012, 500], [2015, 511], [2018, 509], [2022, 489]],
+        FIN: [[2003, 544], [2006, 548], [2009, 541], [2012, 519], [2015, 511], [2018, 507], [2022, 484]],
+        NLD: [[2003, 538], [2006, 531], [2009, 526], [2012, 523], [2015, 512], [2018, 519], [2022, 493]],
+        DEU: [[2003, 503], [2006, 504], [2009, 513], [2012, 514], [2015, 506], [2018, 500], [2022, 475]],
+        USA: [[2003, 483], [2006, 474], [2009, 487], [2012, 481], [2015, 470], [2018, 478], [2022, 465]]
       }
     },
 

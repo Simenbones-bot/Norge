@@ -26,6 +26,7 @@ ingen byggesteg, ingen sporing.
 | Aksjer og fond (% av husholdningenes finansformue) | 7 land | OECD / SSB finansregnskap |
 | Gjennomsnittslønn (USD, PPP-justert) | 7 land | OECD Average Annual Wages |
 | Fødselsrate (barn per kvinne, SFT) | 7 land | Eurostat `tps00199` / SSB / CDC |
+| Skoleresultater (PISA-poeng i matematikk) | 7 land | OECD PISA |
 | BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
 | Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind`/`manr` / SSB / BLS |
 | Styringsrente (ved kvartals-/årsslutt) | 7 land² | Norges Bank / Riksbanken / Nationalbanken / ECB / Fed |

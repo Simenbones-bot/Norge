@@ -65,7 +65,10 @@
     var last = pts[pts.length - 1], prev = pts[pts.length - 2];
     var isPercentUnit = kpi.unit.indexOf("%") === 0;
     var text, dir = last[1] > prev[1] ? 1 : last[1] < prev[1] ? -1 : 0;
-    if (isPercentUnit) {
+    if (kpi.deltaAbsolute) {
+      var diffAbs = last[1] - prev[1];
+      text = (diffAbs > 0 ? "+" : "") + fmt(diffAbs, kpi.decimals) + " " + (kpi.unitShort || kpi.unit);
+    } else if (isPercentUnit) {
       var diff = last[1] - prev[1];
       text = (diff > 0 ? "+" : "") + fmt(diff, 1) + " pp";
     } else {

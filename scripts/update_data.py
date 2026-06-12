@@ -29,6 +29,8 @@ De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
                       innbygger i PPS -> USD PPP per innbygger
   - byggekostnad      SSB byggekostnadsstatistikk / Boligprodusentene
                       (nye eneboliger, kr per m2 uten tomt)
+  - pisa              OECD PISA (matematikk, hvert 3. aar; 2025-runden
+                      publiseres desember 2026)
 """
 
 import json
