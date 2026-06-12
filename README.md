@@ -30,7 +30,9 @@ ingen byggesteg, ingen sporing.
 | Nyetablerte foretak (per år) | Kun Norge¹ | SSB / Brønnøysundregistrene |
 | Konkurser (foretak per år) | Kun Norge¹ | SSB / Brønnøysundregistrene |
 | Skattetrykk (skatter og avgifter, % av BNP) | 7 land | OECD Revenue Statistics |
+| Offentlig ansatte (% av total sysselsetting) | 7 land | OECD Government at a Glance |
 | BNP-vekst (årlig volumvekst) | 7 land | Eurostat `tec00115` / SSB / BEA |
+| Produktivitetsvekst (BNP per arbeidstime) | 7 land | OECD Productivity |
 | Inflasjon (KPI/HICP/CPI) | 7 land | Eurostat `prc_hicp_aind`/`manr` / SSB / BLS |
 | Styringsrente (ved kvartals-/årsslutt) | 7 land² | Norges Bank / Riksbanken / Nationalbanken / ECB / Fed |
 | Kronekursen (kr per euro) | Kun Norge¹ | Norges Bank |

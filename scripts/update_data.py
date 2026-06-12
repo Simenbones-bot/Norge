@@ -35,6 +35,9 @@ De særnorske seriene må oppdateres for hånd i js/data.js med tall fra:
   - nyetableringer    SSB foretaksstatistikk / Broennoeysundregistrene
   - konkurser         SSB opna konkursar / Broennoeysundregistrene
   - skattetrykk       OECD Revenue Statistics (tax-to-GDP)
+  - produktivitet     OECD Productivity (vekst i BNP per arbeidstime)
+  - off_ansatte       OECD Government at a Glance (general government
+                      employment, % av total sysselsetting)
 """
 
 import json
